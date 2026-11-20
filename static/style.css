@@ -1,0 +1,70 @@
+:root {
+  color-scheme: light;
+  font: 15px/1.45 "Segoe UI", system-ui, sans-serif;
+  color: #1c2a3c;
+  background: #f3f6fa;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+.frame { width: min(100% - 48px, 1450px); margin-inline: auto; }
+.top { background: #17283f; color: #fff; }
+.toolbar, .actions, nav, .section-heading { display: flex; align-items: center; gap: 12px; }
+.toolbar { min-height: 66px; gap: 28px; }
+.brand { font-size: 1.22rem; font-weight: 750; white-space: nowrap; }
+nav { align-self: stretch; gap: 4px; }
+nav a { display: flex; align-items: center; padding: 0 13px; color: #d1dbe9; text-decoration: none; border-bottom: 3px solid transparent; }
+nav a[aria-current] { border-bottom-color: #73d6c4; color: #fff; }
+.actions { margin-left: auto; }
+button { font: inherit; font-weight: 600; cursor: pointer; border: 1px solid #bccbdb; border-radius: 7px; background: white; color: #1c2a3c; padding: 6px 12px; white-space: nowrap; }
+button:hover:not(:disabled) { filter: brightness(.94); }
+button:disabled { cursor: default; opacity: .55; }
+#save { background: #8ce4d1; color: #132f30; border-color: #8ce4d1; }
+.status { min-height: 1.45em; color: #485b71; text-align: right; margin: 12px 0 0; }
+.status.error { color: #9c0006; }
+h1 { font-size: clamp(1.65rem, 4vw, 2.4rem); line-height: 1.15; margin: 2px 0 20px; }
+h2 { font-size: 1.14rem; margin: 0; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.metrics > div, section { background: #fff; border: 1px solid #d8e1ec; border-radius: 11px; }
+.metrics > div { padding: 14px 18px; }
+.metrics span, .metrics label, .field-group span { display: block; color: #4a5c72; }
+.metrics strong { display: block; font-size: clamp(1.15rem, 3vw, 1.62rem); margin-top: 3px; }
+.cash-metrics { grid-template-columns: repeat(2, minmax(0, 260px)); }
+section { margin-bottom: 20px; overflow: hidden; }
+.section-heading { justify-content: space-between; padding: 14px 16px; }
+.table-scroll { overflow: auto; }
+table { border-collapse: collapse; width: 100%; }
+.cards-table { min-width: 1140px; }
+#cash table, #cards section:nth-of-type(2) table { min-width: 540px; }
+th, td { padding: 5px 8px; border-bottom: 1px solid #e2e9f1; white-space: nowrap; }
+th { background: #edf2f8; text-align: left; padding-block: 9px; font-size: .88rem; }
+td:last-child, th:last-child { width: 1%; }
+tfoot td { font-weight: 700; background: #edf2f8; padding-block: 9px; }
+input { color: inherit; font: inherit; width: 100%; min-width: 0; border: 1px solid #ccd7e4; border-radius: 5px; padding: 5px 6px; background: #fff; }
+input[inputmode="decimal"] { text-align: right; font-variant-numeric: tabular-nums; min-width: 78px; }
+input[type="checkbox"] { width: 18px; height: 18px; accent-color: #147a6a; margin: 0; vertical-align: middle; }
+input:invalid { border-color: #9c0006; }
+:focus-visible { outline: 2px solid #137d70; outline-offset: 2px; }
+.cards-table td:first-child { min-width: 142px; }
+.cards-table td:nth-child(2) { min-width: 65px; }
+.check { text-align: center; }
+.amount { text-align: right; font-variant-numeric: tabular-nums; }
+td[data-color="red"] { background: #ffc7ce; color: #9c0006; }
+td[data-color="yellow"] { background: #ffeb9c; color: #9c5700; }
+td[data-color="green"] { background: #c6efce; color: #006100; }
+.remove { padding: 2px 7px; color: #526277; }
+details { padding: 11px 16px; }
+summary { cursor: pointer; width: fit-content; }
+.field-group { display: flex; flex-wrap: wrap; align-items: end; gap: 14px; padding: 0 16px 15px; }
+details .field-group { padding: 10px 0 2px; }
+.field-group label { display: block; width: 125px; }
+.field-group input, .metrics input { margin-top: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media (max-width: 720px) {
+  .frame { width: calc(100% - 24px); }
+  .toolbar { flex-wrap: wrap; gap: 4px 12px; padding-block: 8px; }
+  nav a { padding: 6px 8px; }
+  .actions { flex-basis: 100%; margin: 4px 0 0; }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics > div { padding: 10px 12px; }
+}
