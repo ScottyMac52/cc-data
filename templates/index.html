@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CC Data</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="frame toolbar">
+      <span class="brand">CC Data</span>
+      <nav aria-label="Ledger views">
+        <a href="#cards">Cards &amp; expenses</a>
+        <a href="#cash">Cash ledger</a>
+      </nav>
+      <div class="actions">
+        <button type="button" id="backup" disabled>Download backup</button>
+        <button type="submit" form="ledger" id="save" disabled>Save changes</button>
+      </div>
+    </div>
+  </header>
+  <main class="frame">
+    <p id="status" class="status" role="status" aria-live="polite">Loading ledger…</p>
+    <form id="ledger" hidden>
+      <div id="cards">
+        <h1>Credit cards &amp; expenses</h1>
+        <div class="metrics">
+          <div><span>Total balance</span><strong id="total-balance"></strong></div>
+          <div><span>Available credit</span><strong id="total-available"></strong></div>
+          <div><span>Current utilization</span><strong id="total-current"></strong></div>
+          <div><span>Projected utilization</span><strong id="total-future"></strong></div>
+        </div>
+        <section>
+          <div class="section-heading">
+            <h2>Credit cards</h2>
+            <button type="button" data-add="cards">Add card</button>
+          </div>
+          <div class="table-scroll">
+            <table class="cards-table">
+              <thead><tr>
+                <th scope="col">Bank</th><th scope="col">Card</th>
+                <th scope="col">Limit</th><th scope="col">Balance</th><th scope="col">Available</th>
+                <th scope="col">% used</th><th scope="col">Payment</th><th scope="col">Date</th>
+                <th scope="col">Projected balance</th><th scope="col">Projected %</th>
+                <th scope="col">Processed</th><th scope="col"><span class="sr-only">Actions</span></th>
+              </tr></thead>
+              <tbody id="card-rows"></tbody>
+              <tfoot id="card-totals"></tfoot>
+            </table>
+          </div>
+          <details>
+            <summary>Utilization thresholds</summary>
+            <div class="field-group">
+              <label>Low (%) <input data-scalar="low" data-kind="threshold" inputmode="decimal" required></label>
+              <label>Medium (%) <input data-scalar="medium" data-kind="threshold" inputmode="decimal" required></label>
+              <label>High (%) <input data-scalar="high" data-kind="threshold" inputmode="decimal" required></label>
+            </div>
+          </details>
+        </section>
+        <section>
+          <div class="section-heading">
+            <h2>Other expenses</h2>
+            <button type="button" data-add="expenses">Add expense</button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Item</th><th scope="col">Amount</th>
+                <th scope="col">Running total</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+              <tbody id="expense-seed"></tbody>
+              <tbody id="expense-rows"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+      <div id="cash" hidden>
+        <h1>Cash ledger</h1>
+        <div class="metrics cash-metrics">
+          <div><label for="opening">Opening balance</label>
+            <input id="opening" data-scalar="opening" data-kind="money" inputmode="decimal"></div>
+          <div><span>Ending balance</span><strong id="ending"></strong></div>
+        </div>
+        <section>
+          <div class="section-heading">
+            <h2>Transactions</h2>
+            <button type="button" data-add="transactions">Add transaction</button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Description</th><th scope="col">Credit</th><th scope="col">Debit</th>
+                <th scope="col">Balance after transaction</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+              <tbody id="transaction-rows"></tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <div class="section-heading"><h2>Separate subtotal</h2></div>
+          <div class="field-group">
+            <label>Amount 1 <input data-scalar="subtotal_left" data-kind="money" inputmode="decimal"></label>
+            <label>Amount 2 <input data-scalar="subtotal_right" data-kind="money" inputmode="decimal"></label>
+            <div><span>Total</span><strong id="subtotal"></strong></div>
+          </div>
+        </section>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

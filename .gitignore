@@ -221,3 +221,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Personal data and backups
+/instance/
+*.xlsx
+*.xlsm
+*.sqlite*
+*.db
+*.db-*
