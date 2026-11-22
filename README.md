@@ -14,6 +14,14 @@ py -m venv .venv
 
 Open [the local app](http://127.0.0.1:5000) in Edge. Keep PowerShell open while using it. Press Ctrl+C to stop the app. On macOS or Linux use `python3 -m venv .venv` and `.venv/bin/python` for the same commands.
 
+If Windows reports that the socket is forbidden or port 5000 is already in use, try a different local port:
+
+```powershell
+.\.venv\Scripts\python.exe app.py --port 8765
+```
+
+Open [the app on port 8765](http://127.0.0.1:8765). Each port uses the same SQLite database, so you only need to import the workbook once.
+
 ## Import the workbook
 
 Before saving edits in the app, run the import once with your workbook path:
