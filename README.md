@@ -30,4 +30,6 @@ A blank or zero limit displays a dash for utilization. The default workbook rule
 
 Use **Save changes** when you finish editing either view. **Download backup** exports a SQLite snapshot of your saved data. To restore a backup, stop the app, keep a copy of the current database, and place the backup at `instance/ledger.sqlite3`. Restart the app and reload the browser.
 
+Drag a card by its handle to reorder the list, or focus the handle and press Up or Down. Save changes to keep the new order.
+
 Keep the workbook, database, and backups on your computer. The server listens on your own computer at `127.0.0.1`.
