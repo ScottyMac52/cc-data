@@ -142,7 +142,10 @@ def create_app(database=None):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the local credit card and cash ledger.")
     parser.add_argument("--import-xlsx", type=Path, metavar="FILE", help="Import into a new ledger and exit")
+    parser.add_argument("--port", type=int, default=5000, help="Local server port (default: %(default)s)")
     args = parser.parse_args()
+    if not 1 <= args.port <= 65535:
+        parser.error("--port must be between 1 and 65535")
     app, save = create_app()
     if args.import_xlsx:
         try:
@@ -153,4 +156,4 @@ if __name__ == "__main__":
             parser.exit(1, "Import requires an unused ledger. Existing entries were preserved.\n")
         print("Imported both sheets.")
     else:
-        app.run(host="127.0.0.1", port=5000)
+        app.run(host="127.0.0.1", port=args.port)

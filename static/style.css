@@ -29,13 +29,22 @@ h2 { font-size: 1.14rem; margin: 0; }
 .metrics > div { padding: 14px 18px; }
 .metrics span, .metrics label, .field-group span { display: block; color: #4a5c72; }
 .metrics strong { display: block; font-size: clamp(1.15rem, 3vw, 1.62rem); margin-top: 3px; }
-.cash-metrics { grid-template-columns: repeat(2, minmax(0, 260px)); }
+.cash-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cash-metrics #opening { max-width: 10rem; }
+.cash-metrics .closing-balance { background: #e5f5f1; border-color: #a9d8ce; }
 section { margin-bottom: 20px; overflow: hidden; }
 .section-heading { justify-content: space-between; padding: 14px 16px; }
+.section-hint { color: #485b71; font-size: .88rem; margin: 3px 0 0; }
 .table-scroll { overflow: auto; }
 table { border-collapse: collapse; width: 100%; }
-.cards-table { min-width: 1140px; }
-#cash table, #cards section:nth-of-type(2) table { min-width: 540px; }
+.cards-table { min-width: 1180px; }
+#cards section:nth-of-type(2) table { min-width: 540px; }
+.cash-table { min-width: 500px; }
+.cash-table :is(th, td):nth-child(n+2):nth-child(-n+4) { width: 16%; }
+.cash-table tbody tr:nth-child(even) { background: #f7f9fc; }
+.cash-table td[data-output="running"] { font-weight: 650; }
+.negative-balance, .cash-table td[data-color="negative"] { color: #9c0006; }
+.empty-ledger { margin: 0; padding: 18px 16px; color: #485b71; }
 th, td { padding: 5px 8px; border-bottom: 1px solid #e2e9f1; white-space: nowrap; }
 th { background: #edf2f8; text-align: left; padding-block: 9px; font-size: .88rem; }
 td:last-child, th:last-child { width: 1%; }
@@ -45,8 +54,13 @@ input[inputmode="decimal"] { text-align: right; font-variant-numeric: tabular-nu
 input[type="checkbox"] { width: 18px; height: 18px; accent-color: #147a6a; margin: 0; vertical-align: middle; }
 input:invalid { border-color: #9c0006; }
 :focus-visible { outline: 2px solid #137d70; outline-offset: 2px; }
-.cards-table td:first-child { min-width: 142px; }
-.cards-table td:nth-child(2) { min-width: 65px; }
+.cards-table :is(th, td):first-child { width: 1%; }
+.cards-table td:nth-child(2) { min-width: 142px; }
+.cards-table td:nth-child(3) { min-width: 65px; }
+.drag-handle { cursor: grab; padding: 2px 7px; color: #485b71; }
+.dragging .drag-handle { cursor: grabbing; }
+[data-drop="before"] > td { box-shadow: inset 0 2px #137d70; }
+[data-drop="after"] > td { box-shadow: inset 0 -2px #137d70; }
 .check { text-align: center; }
 .amount { text-align: right; font-variant-numeric: tabular-nums; }
 td[data-color="red"] { background: #ffc7ce; color: #9c0006; }

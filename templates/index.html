@@ -34,12 +34,16 @@
         </div>
         <section>
           <div class="section-heading">
-            <h2>Credit cards</h2>
+            <div>
+              <h2>Credit cards</h2>
+              <p class="section-hint" id="card-order-help">Drag a row by its handle, or focus the handle and press ↑ or ↓. Save changes to keep the order.</p>
+            </div>
             <button type="button" data-add="cards">Add card</button>
           </div>
           <div class="table-scroll">
             <table class="cards-table">
               <thead><tr>
+                <th scope="col"><span class="sr-only">Order</span></th>
                 <th scope="col">Bank</th><th scope="col">Card</th>
                 <th scope="col">Limit</th><th scope="col">Balance</th><th scope="col">Available</th>
                 <th scope="col">% used</th><th scope="col">Payment</th><th scope="col">Date</th>
@@ -79,7 +83,9 @@
         <div class="metrics cash-metrics">
           <div><label for="opening">Opening balance</label>
             <input id="opening" data-scalar="opening" data-kind="money" inputmode="decimal"></div>
-          <div><span>Ending balance</span><strong id="ending"></strong></div>
+          <div><span>Total credits</span><strong id="credit-total"></strong></div>
+          <div><span>Total debits</span><strong id="debit-total"></strong></div>
+          <div class="closing-balance"><span>Ending balance</span><strong id="ending"></strong></div>
         </div>
         <section>
           <div class="section-heading">
@@ -87,12 +93,13 @@
             <button type="button" data-add="transactions">Add transaction</button>
           </div>
           <div class="table-scroll">
-            <table>
-              <thead><tr><th scope="col">Description</th><th scope="col">Credit</th><th scope="col">Debit</th>
-                <th scope="col">Balance after transaction</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
+            <table class="cash-table">
+              <thead><tr><th scope="col">Description</th><th class="amount" scope="col">Credit</th><th class="amount" scope="col">Debit</th>
+                <th class="amount" scope="col">Running balance</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead>
               <tbody id="transaction-rows"></tbody>
             </table>
           </div>
+          <p class="empty-ledger" id="empty-ledger" hidden>No transactions yet.</p>
         </section>
         <section>
           <div class="section-heading"><h2>Separate subtotal</h2></div>
